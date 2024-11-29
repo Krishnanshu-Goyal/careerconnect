@@ -69,6 +69,14 @@ export default function Navbar() {
                 <li className="nav-item">
                   <Link
                     className="nav-link"
+                    to="/add-resource"
+                  >
+                    Add Resources
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
                     aria-current="page"
                     to="/Placementstatus"
                   >

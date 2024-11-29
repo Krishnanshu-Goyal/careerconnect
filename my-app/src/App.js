@@ -8,11 +8,13 @@ import Jobopportunity from './pages/Jobopportunity';
 import Placementstatus from './pages/Placementstatus';
 import Viewrequest from './pages/Viewrequest';
 import Setting from './pages/Setting';
+import AddResourcePage from './pages/AddResourcePage';
 import {
   BrowserRouter as Router,
   Route,
   Routes
 } from "react-router-dom";
+
 function App() {
   return (
     <>
@@ -23,6 +25,7 @@ function App() {
       <Route path="/leaderboard" element={<Leaderboard />} />
       <Route path="/getcertificate" element={<GetCertificatePage />} />
       <Route path="/jobopportunity" element={<Jobopportunity />} />
+      <Route path="/add-resource" element={<AddResourcePage />} />
       <Route path="/placementstatus" element={<Placementstatus />} />
       <Route path="/viewrequest" element={<Viewrequest />} />
       <Route path="/setting" element={<Setting />} />
