@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Leaderboard from './components/Leaderboard';
 import GetCertificatePage from './pages/GetcertificatePage';
 import Jobopportunity from './pages/Jobopportunity';
-import Placementstatus from './pages/Placementstatus';
+import Placementstats from './pages/Placementstats';
 import Viewrequest from './pages/Viewrequest';
 import Setting from './pages/Setting';
 import AddResourcePage from './pages/AddResourcePage';
@@ -28,7 +28,7 @@ function App() {
       <Route path="/jobopportunity" element={<Jobopportunity />} />
       <Route path="/add-resource" element={<AddResourcePage />} />
       <Route path="/feedback-form" element={<FeedbackForm />} />
-      <Route path="/placementstatus" element={<Placementstatus />} />
+      <Route path="/placementstats" element={<Placementstats />} />
       <Route path="/viewrequest" element={<Viewrequest />} />
       <Route path="/setting" element={<Setting />} />
       <Route path="/" element={<Home />} />

@@ -71,8 +71,10 @@ const ResourceForm = () => {
   };
 
   return (
-    <div>
-      <h2>Upload Resource</h2>
+    <div className='form'>
+      <div className="form-header">
+        <h1> Upload Resources</h1>
+      </div>
       <form onSubmit={handleFormSubmit}>
         <div>
           <label>Title of the Resource:</label>
