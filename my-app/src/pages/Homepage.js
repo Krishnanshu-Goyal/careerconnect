@@ -1,5 +1,6 @@
 import React from 'react'
 import img from '../images/profile.jpg'
+import Charts from '../components/Charts'
 export default function Homepage(props) {
   return (
     <div>
@@ -15,7 +16,9 @@ export default function Homepage(props) {
         </div>
       </div>
       <div className='middle'>
-        <div className='middle-left'></div>
+        <div className='middle-left'>
+          <Charts />
+        </div>
         <div className='middle-right'></div>
       </div>
       <div className='bottom'></div>
