@@ -65,8 +65,8 @@ const FeedbackForm = () => {
             <option value="">Select duration</option>
             <option value="Less than 6 months">Less than 6 months</option>
             <option value="6 months - 1 year">6 months - 1 year</option>
-            <option value="1-3 years">1-3 years</option>
-            <option value="3-5 years">3-5 years</option>
+            <option value="Toxic">Toxic</option>
+            <option value="Average">Average</option>
             <option value="More than 5 years">More than 5 years</option>
           </select>
           {errors.duration && <span className="error">{errors.duration}</span>}
@@ -89,12 +89,13 @@ const FeedbackForm = () => {
         {/* Work Culture */}
         <div className="form-section">
           <label>How would you describe the work culture at this company?</label>
-          <textarea
-            name="workCulture"
-            rows="3"
-            placeholder="E.g., supportive, competitive, toxic, etc."
-            onChange={handleInputChange}
-          ></textarea>
+          <select name="culture" onChange={handleInputChange}>
+            <option value="">Select</option>
+            <option value="Supportive">Supportive</option>
+            <option value="Average">Average</option>
+            <option value="Competitive">Competitive</option>
+            <option value="Toxic">Toxic</option>
+          </select>
           {errors.workCulture && <span className="error">{errors.workCulture}</span>}
         </div>
 
@@ -111,6 +112,144 @@ const FeedbackForm = () => {
           {errors.workLifeBalance && <span className="error">{errors.workLifeBalance}</span>}
         </div>
 
+
+        {/* Inclusivity */}
+        <div className="form-section">
+          <label>How inclusive and diverse is the company’s work environment?</label>
+          <select name="inclusive" onChange={handleInputChange}>
+            <option value="">Select</option>
+            <option value="Highly Inclusive">Highly Inclusive</option>
+            <option value="Moderately Inclusive">Moderately Inclusive</option>
+            <option value="Needs Improvement">Needs Improvement</option>
+          </select>
+          {errors.inclusive && <span className="error">{errors.inclusive}</span>}
+        </div>
+
+        {/* colleagues */}
+        <div className="form-section">
+          <label>How approachable and supportive are your team members or colleagues?</label>
+          <select name="colleagues" onChange={handleInputChange}>
+            <option value="">Select</option>
+            <option value="Highly Supportive">Highly Supportive</option>
+            <option value="Moderately Supportive">Moderately Supportive</option>
+            <option value="Not very Supportive">Not very Supportive</option>
+          </select>
+          {errors.colleagues && <span className="error">{errors.colleagues}</span>}
+        </div>
+
+        {/* safety */}
+        <div className="form-section">
+          <label>How safe and comfortable is the workplace environment, both physically and mentally?</label>
+          <select name="safety" onChange={handleInputChange}>
+            <option value="">Select</option>
+            <option value="Very comfortable and safe">Very comfortable and safe</option>
+            <option value="Somewhat comfortable">Somewhat comfortable</option>
+            <option value="Needs improvement">Needs improvement</option>
+          </select>
+          {errors.safety && <span className="error">{errors.safety}</span>}
+        </div>
+
+        {/* grievances */}
+        <div className="form-section">
+          <label>Does the company have effective policies to address grievances, harassment, or workplace conflicts?</label>
+          <select name="grievances" onChange={handleInputChange}>
+            <option value="">Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="No Idea">No Idea</option>
+          </select>
+          {errors.grievances && <span className="error">{errors.grievances}</span>}
+        </div>
+
+
+        {/* Overtime */}
+        <div className="form-section">
+          <label>Are you often required to work overtime or on weekends?</label>
+          <select name="overtime" onChange={handleInputChange}>
+            <option value="">Select</option>
+            <option value="Rarely">Rarely</option>
+            <option value="Sometimes">Sometimes</option>
+            <option value="Frequently">Frequently</option>
+          </select>
+          {errors.overtime && <span className="error">{errors.overtime}</span>}
+        </div>
+
+
+        {/* remote */}
+        <div className="form-section">
+          <label>On a scale of 1-5, how flexible is the company in terms of remote work and time management?</label>
+          <input
+            type="number"
+            name="remote"
+            min="1"
+            max="5"
+            placeholder="Rate 1-5"
+            onChange={handleInputChange}
+          />
+          {errors.remote && <span className="error">{errors.remote}</span>}
+        </div>
+
+        {/* compensation */}
+        <div className="form-section">
+          <label>Are you satisfied with the compensation package (salary, bonuses, and benefits) offered?</label>
+          <select name="compensation" onChange={handleInputChange}>
+            <option value="">Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          {errors.compensation && <span className="error">{errors.compensation}</span>}
+        </div>
+
+        {/* mobility */}
+        <div className="form-section">
+          <label>Is there scope for internal mobility (switching teams, departments, or roles)?</label>
+          <select name="mobility" onChange={handleInputChange}>
+            <option value="">Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          {errors.mobility && <span className="error">{errors.mobility}</span>}
+        </div>
+
+        {/* benefits */}
+        <div className="form-section">
+          <label>On a scale of 1-5, how would you rate the additional perks and benefits? (e.g., health insurance, wellness programs, paid time off)</label>
+          <input
+            type="number"
+            name="benefits"
+            min="1"
+            max="5"
+            placeholder="Rate 1-5"
+            onChange={handleInputChange}
+          />
+          {errors.benefits && <span className="error">{errors.benefits}</span>}
+        </div>
+
+        {/* management */}
+        <div className="form-section">
+          <label>How would you rate the company’s leadership and management?</label>
+          <select name="management" onChange={handleInputChange}>
+            <option value="">Select</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Average">Average</option>
+            <option value="Poor">Poor</option>
+          </select>
+          {errors.management && <span className="error">{errors.management}</span>}
+        </div>
+
+        {/* suggestions */}
+        <div className="form-section">
+          <label>How open is the company to employee feedback and suggestions?</label>
+          <select name="suggestions" onChange={handleInputChange}>
+            <option value="">Select</option>
+            <option value="Very Open">Very Open</option>
+            <option value="Somewhat Open">Somewhat Open</option>
+            <option value="Not at all Open">Not at all Open</option>
+          </select>
+          {errors.suggestions && <span className="error">{errors.suggestions}</span>}
+        </div>
+
         {/* Recommendation */}
         <div className="form-section">
           <label>How likely are you to recommend this company to a fresher?</label>
@@ -124,9 +263,31 @@ const FeedbackForm = () => {
           {errors.recommendation && <span className="error">{errors.recommendation}</span>}
         </div>
 
+        {/* strengths */}
+        <div className="form-section">
+          <label>What are the company’s biggest strengths in your opinion?</label>
+          <textarea
+            name="strengths"
+            rows="4"
+            placeholder="Share your thoughts..."
+            onChange={handleInputChange}
+          ></textarea>
+        </div>
+
+        {/* weakness */}
+        <div className="form-section">
+          <label>What areas does the company need to improve on?</label>
+          <textarea
+            name="weakness"
+            rows="4"
+            placeholder="Share your thoughts..."
+            onChange={handleInputChange}
+          ></textarea>
+        </div>
+
         {/* Additional Feedback */}
         <div className="form-section">
-          <label>Do you have any additional advice for freshers?</label>
+          <label>Do you have any additional advice for freshers considering this company?</label>
           <textarea
             name="additionalAdvice"
             rows="4"
@@ -134,6 +295,8 @@ const FeedbackForm = () => {
             onChange={handleInputChange}
           ></textarea>
         </div>
+
+
 
         <button type="submit">Submit Feedback</button>
       </form>
