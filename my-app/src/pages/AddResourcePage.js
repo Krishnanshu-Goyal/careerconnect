@@ -27,7 +27,6 @@ const AddResourcePage = () => {
 
   return (
     <div>
-      <h2>Add Resource</h2>
       <ResourceForm formData={formData} onChange={handleChange} onSubmit={handleSubmit} />
     </div>
   );

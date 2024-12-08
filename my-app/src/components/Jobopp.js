@@ -69,8 +69,10 @@ const Jobopp = () => {
   };
 
   return (
-    <div>
-      <h2>Upload Job Opportunity</h2>
+    <div className='form'>
+      <div className="form-header">
+        <h1> Upload Job Opportunity</h1>
+      </div>
       <form onSubmit={handleFormSubmit}>
         <div>
           <label>Job role :</label>

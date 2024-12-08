@@ -26,7 +26,6 @@ const Jobopportunity = () => {
 
   return (
     <div>
-      <h2>Add Job Opportunity</h2>
       <Jobopp formData={formData} onChange={handleChange} onSubmit={handleSubmit} />
     </div>
   );

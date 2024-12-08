@@ -87,9 +87,9 @@ export default function Navbar() {
                   <Link
                     className="nav-link"
                     aria-current="page"
-                    to="/Placementstatus"
+                    to="/Placementstats"
                   >
-                    Placement Status 
+                    Placement Stats 
                   </Link>
                 </li>
                 <li className="nav-item">

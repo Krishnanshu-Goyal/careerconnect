@@ -1,13 +1,13 @@
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 10px;
+    padding: 30px;
     background: #f9f9f9;
     color: #333;
   }
   
   /* Form Container */
-  form {
+  .form {
     max-width: 700px;
     margin: 30px auto;
     background: #ffffff;
@@ -19,14 +19,14 @@ body {
   /* Header Styles */
   .form-header {
     text-align: center;
-    padding: 20px 0;
+    padding: 10px ;
     background: linear-gradient(90deg, #4CAF50, #2196F3);
-    border-radius: 15px 15px 0 0;
+    border-radius: 15px 15px 15px 15px;
     color: white;
   }
   
   .form-header h1 {
-    margin: 0;
+    margin: 5px;
     font-size: 1.8rem;
   }
   
