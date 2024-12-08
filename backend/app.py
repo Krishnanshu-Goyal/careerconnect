@@ -12,6 +12,8 @@ CORS(app)
 client = MongoClient("mongodb://localhost:27017/")
 db = client['mydatabase']  # Replace 'mydatabase' with your database name
 collection = db['resources']  # Replace 'resources' with your collection name
+job_collection = db['job_opportunities']
+
 
 # File upload configuration
 UPLOAD_FOLDER = './uploads'
@@ -53,6 +55,34 @@ def add_resource():
         collection.insert_one(resource_data)
 
         return jsonify({"message": "Resource added successfully!"}), 201
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/job-opportunities', methods=['POST'])
+def add_job_opportunity():
+    try:
+        # Get form data
+        title = request.form['title']
+        company = request.form['company']
+        type_ = request.form['type']
+        field  = request.form['field']
+        exp_level = request.form['exp_level']
+        link = request.form['link']
+
+
+        # Insert data into MongoDB
+        job_data = {
+            "title": title,
+            "company": company,
+            "type": type_,
+            "field": field,
+            "exp_level": exp_level,
+            "link": link 
+        }
+        job_collection.insert_one(job_data)
+
+        return jsonify({"message": "Job opportunity added successfully!"}), 201
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
