@@ -1,8 +1,24 @@
-// src/components/ResourceForm.js
 import React, { useState } from 'react';
+import '../styling/ResourceForm.css'
 
-const ResourceForm = ({ formData, onChange, onSubmit }) => {
+const ResourceForm = () => {
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    type: '',
+    category: '',
+    company: '',
+  });
   const [file, setFile] = useState(null); // to store the uploaded file
+  const [responseMessage, setResponseMessage] = useState(''); // to show server response
+
+  // Handle input changes for form fields
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   // Handle file input change
   const handleFileChange = (e) => {
@@ -10,9 +26,9 @@ const ResourceForm = ({ formData, onChange, onSubmit }) => {
   };
 
   // Handle form submission
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Create a FormData object to append the file with other form data
     const formDataToSend = new FormData();
     formDataToSend.append('title', formData.title);
@@ -20,51 +36,128 @@ const ResourceForm = ({ formData, onChange, onSubmit }) => {
     formDataToSend.append('type', formData.type);
     formDataToSend.append('category', formData.category);
     formDataToSend.append('company', formData.company);
-    formDataToSend.append('file', file); // Add the file to formData
 
-    // Submit the data to the backend
-    onSubmit(formDataToSend);
+    if (file) {
+      formDataToSend.append('file', file); // Add the file to formData
+    }
+
+    try {
+      // Send the form data to the backend
+      const response = await fetch('http://127.0.0.1:5000/api/resources', {
+        method: 'POST',
+        body: formDataToSend, // Send FormData
+      });
+
+      // Handle the server's response
+      if (response.ok) {
+        const data = await response.json();
+        setResponseMessage(data.message);
+        // Reset form after successful submission
+        setFormData({
+          title: '',
+          description: '',
+          type: '',
+          category: '',
+          company: '',
+        });
+        setFile(null);
+      } else {
+        setResponseMessage('Failed to submit resource.');
+      }
+    } catch (error) {
+      console.error('Error submitting resource:', error);
+      setResponseMessage('An error occurred while submitting the resource.');
+    }
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <div>
-        <label>Title:</label>
-        <input type="text" name="title" value={formData.title} onChange={onChange} required />
-      </div>
+    <div>
+      <h2>Upload Resource</h2>
+      <form onSubmit={handleFormSubmit}>
+        <div>
+          <label>Title of the Resource:</label>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-      <div>
-        <label>Description:</label>
-        <textarea name="description" value={formData.description} onChange={onChange} required />
-      </div>
+        <div>
+          <label>Description:</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-      <div>
-        <label>Type:</label>
-        <select name="type" value={formData.type} onChange={onChange} required>
-          <option value="">Select Type</option>
-          <option value="PDF">PDF</option>
-          <option value="Word">Word</option>
-        </select>
-      </div>
+        <div>
+          <label>Resource Type:</label>
+          <select
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Type</option>
+            <option value="Study Material">Study Material</option>
+            <option value="Practice Questions">Practice Questions</option>
+            <option value="Mock Tests">Mock Tests</option>
+            <option value="Video Tutorials">Video Tutorials</option>
+            <option value="Notes/Guides">Notes/Guides</option>
+          </select>
+        </div>
 
-      <div>
-        <label>Category:</label>
-        <input type="text" name="category" value={formData.category} onChange={onChange} required />
-      </div>
+        <div>
+          <label>Category:</label>
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Type</option>
+            <option value="Online Assessment">Online Assessment</option>
+            <option value="Technical Interview">Technical Interview</option>
+            <option value="HR Interview">HR Interview</option>
+          </select>
+        </div>
 
-      <div>
-        <label>Company Name:</label>
-        <input type="text" name="company" value={formData.company} onChange={onChange} required />
-      </div>
+        <div>
+          <label>Company Name:</label>
+          <input
+            type="text"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-      <div>
-        <label>Upload Resource File (PDF/Word):</label>
-        <input type="file" onChange={handleFileChange} accept=".pdf,.doc,.docx" />
-      </div>
+        <div>
+          <label>Upload Resource File:</label>
+          <input
+            type="file"
+            onChange={handleFileChange}
+            accept=".pdf,.doc,.docx, .mp4"
+            required
+          />
+        </div>
 
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+      </form>
+
+      {/* Display response message */}
+      {responseMessage && <p>{responseMessage}</p>}
+    </div>
   );
 };
 
 export default ResourceForm;
+
+
+

@@ -9,6 +9,7 @@ import Placementstatus from './pages/Placementstatus';
 import Viewrequest from './pages/Viewrequest';
 import Setting from './pages/Setting';
 import AddResourcePage from './pages/AddResourcePage';
+import FeedbackForm from './pages/FeedbackForm';
 import {
   BrowserRouter as Router,
   Route,
@@ -26,6 +27,7 @@ function App() {
       <Route path="/getcertificate" element={<GetCertificatePage />} />
       <Route path="/jobopportunity" element={<Jobopportunity />} />
       <Route path="/add-resource" element={<AddResourcePage />} />
+      <Route path="/feedback-form" element={<FeedbackForm />} />
       <Route path="/placementstatus" element={<Placementstatus />} />
       <Route path="/viewrequest" element={<Viewrequest />} />
       <Route path="/setting" element={<Setting />} />

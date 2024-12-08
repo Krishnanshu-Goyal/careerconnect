@@ -77,6 +77,15 @@ export default function Navbar() {
                 <li className="nav-item">
                   <Link
                     className="nav-link"
+                    to="/feedback-form"
+                  >
+                   Feedback Form
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
                     aria-current="page"
                     to="/Placementstatus"
                   >
