@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styling/ResourceForm.css'
+import '../styling/Form.css'
 
 const ResourceForm = () => {
   const [formData, setFormData] = useState({
@@ -160,6 +160,3 @@ const ResourceForm = () => {
 };
 
 export default ResourceForm;
-
-
-

@@ -13,6 +13,7 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client['mydatabase']  # Replace 'mydatabase' with your database name
 collection = db['resources']  # Replace 'resources' with your collection name
 job_collection = db['job_opportunities']
+feedback_collection = db['feedback']
 
 
 # File upload configuration
@@ -83,6 +84,62 @@ def add_job_opportunity():
         job_collection.insert_one(job_data)
 
         return jsonify({"message": "Job opportunity added successfully!"}), 201
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/api/feedback', methods=['POST'])
+def add_feedback():
+    try:
+        # Get form data
+        companyName = request.form['companyName']
+        duration = request.form['duration']
+        satisfaction = request.form['satisfaction']
+        culture  = request.form['culture']
+        workLifeBalance = request.form['workLifeBalance']
+        inclusive = request.form['inclusive']
+        colleagues = request.form['colleagues']
+        safety = request.form['safety']
+        grievances = request.form['grievances']
+        overtime = request.form['overtime']
+        remote  = request.form['remote']
+        compensation = request.form['compensation']
+        mobility = request.form['mobility']
+        benefits = request.form['benefits']
+        management = request.form['management']
+        suggestions = request.form['suggestions']
+        recommendation  = request.form['recommendation']
+        strengths = request.form['strengths']
+        weakness = request.form['weakness']
+        additionalAdvice = request.form['additionalAdvice']
+
+
+        # Insert data into MongoDB
+        feedback_data = {
+            "companyName": companyName,
+            "duration": duration,
+            "satisfaction": satisfaction,
+            "culture": culture,
+            "workLifeBalance": workLifeBalance,
+            "inclusive": inclusive, 
+            "colleagues": colleagues,
+            "safety": safety,
+            "grievances": grievances,
+            "overtime": overtime,
+            "remote": remote,
+            "compensation": compensation, 
+            "mobility": mobility,
+            "benefits": benefits,
+            "management": management,
+            "suggestions": suggestions,
+            "recommendation": recommendation,
+            "strengths": strengths,
+            "weakness": weakness,
+            "additionalAdvice": additionalAdvice  
+        }
+        feedback_collection.insert_one(feedback_data)
+
+        return jsonify({"message": "Feedback added successfully!"}), 201
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500

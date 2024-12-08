@@ -77,7 +77,7 @@ export default function Navbar() {
                 <li className="nav-item">
                   <Link
                     className="nav-link"
-                    to="/feedback-form"
+                    to="/feedback-page"
                   >
                    Feedback Form
                   </Link>
@@ -99,7 +99,7 @@ export default function Navbar() {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/Setting">
-                    Setting
+                    Settings
                   </Link>
                 </li>
               </ul>
