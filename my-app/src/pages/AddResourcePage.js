@@ -7,9 +7,8 @@ const AddResourcePage = () => {
     title: '',
     description: '',
     type: '',
-    link: '',
     category: '',
-    company: ''
+    company: '',
   });
 
   const handleChange = (e) => {

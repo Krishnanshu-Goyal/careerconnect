@@ -1,6 +1,9 @@
+import '../styling/Getcertificate.css';
 import React, { useState, useEffect } from 'react';
 import { getCertificateData } from '../services/certificateService'; // If you have an API service
 import jsPDF from 'jspdf'; // Import jsPDF for PDF generation
+import '../styling/Getcertificate.css';
+
 
 function Getcertificate() {
     const [certificateData, setCertificateData] = useState(null);
@@ -31,14 +34,16 @@ function Getcertificate() {
     if (!certificateData) return <p>Loading...</p>;
 
     return (
-        <div>
-            <h1>Your Certificate</h1>
-            <div id="certificate">
-                <h2>{certificateData.name}</h2>
-                <p>{certificateData.course}</p>
-                <p>{certificateData.date}</p>
+        <div className="certificate-container">
+            <div className="certificate-content">
+                <h1>Your Certificate</h1>
+                <div id="certificate">
+                    <h2>{certificateData.name}</h2>
+                    <p>{certificateData.course}</p>
+                    <p>{certificateData.date}</p>
+                </div>
+                <button onClick={downloadCertificate}>Download as PDF</button>
             </div>
-            <button onClick={downloadCertificate}>Download as PDF</button>
         </div>
     );
 }
