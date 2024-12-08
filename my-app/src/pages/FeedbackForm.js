@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styling/FeedbackForm.css";
+//import "../styling/FeedbackForm.css";
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({});
