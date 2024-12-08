@@ -9,7 +9,7 @@ import Placementstats from './pages/Placementstats';
 import Viewrequest from './pages/Viewrequest';
 import Setting from './pages/Setting';
 import AddResourcePage from './pages/AddResourcePage';
-import FeedbackForm from './pages/FeedbackForm';
+import FeedbackPage from './pages/FeedbackPage';
 import {
   BrowserRouter as Router,
   Route,
@@ -27,7 +27,7 @@ function App() {
       <Route path="/getcertificate" element={<GetCertificatePage />} />
       <Route path="/jobopportunity" element={<Jobopportunity />} />
       <Route path="/add-resource" element={<AddResourcePage />} />
-      <Route path="/feedback-form" element={<FeedbackForm />} />
+      <Route path="/feedback-page" element={<FeedbackPage />} />
       <Route path="/placementstats" element={<Placementstats />} />
       <Route path="/viewrequest" element={<Viewrequest />} />
       <Route path="/setting" element={<Setting />} />

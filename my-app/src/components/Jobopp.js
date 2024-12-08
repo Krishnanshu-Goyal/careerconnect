@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styling/ResourceForm.css'
+import '../styling/Form.css'
 
 const Jobopp = () => {
   const [formData, setFormData] = useState({
