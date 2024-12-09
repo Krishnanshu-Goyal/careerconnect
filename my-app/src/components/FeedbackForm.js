@@ -132,8 +132,8 @@ const FeedbackForm = () => {
             <option value="">Select duration</option>
             <option value="Less than 6 months">Less than 6 months</option>
             <option value="6 months - 1 year">6 months - 1 year</option>
-            <option value="Toxic">Toxic</option>
-            <option value="Average">Average</option>
+            <option value="1-2 years">1-2 years</option>
+            <option value="2-5 years">2-5 years</option>
             <option value="More than 5 years">More than 5 years</option>
           </select>
         </div>
