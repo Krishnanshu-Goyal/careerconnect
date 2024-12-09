@@ -1,5 +1,7 @@
 import React from 'react';
 import '../App.css';
+import noti from '../images/notification.png'
+import logout from '../images/logout.png'
 import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
@@ -16,9 +18,12 @@ export default function Navbar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <Link className="navbar-brand" to="#">
-            Offcanvas navbar
-          </Link>
+          
+          <div className="navbar-logo ms-auto"  >
+          <img className="noti" src={noti} alt="Logo" />
+          <img className="logout" src={logout} alt="Logo" />
+          </div>
+
           <div
             className="offcanvas offcanvas-start"
             tabIndex="-1"
@@ -27,7 +32,7 @@ export default function Navbar() {
           >
             <div className="offcanvas-header">
               <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-                Offcanvas
+              Career Connect
               </h5>
               <button
                 type="button"
