@@ -4,7 +4,7 @@ import Homepage from '../pages/Homepage'
 export default function Home() {
   return (
     <div>
-      <Homepage name='Krishnanshu Goyal' company='XYZ Pvt Ltd' workexp='2 years'/>
+      <Homepage name='John Doe' company='XYZ Pvt Ltd' workexp='2 years'/>
     </div>
   )
 }
