@@ -3,10 +3,12 @@ from flask_cors import CORS
 from pymongo import MongoClient
 import os
 from werkzeug.utils import secure_filename
+from bson.objectid import ObjectId
+
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 # MongoDB configuration
 client = MongoClient("mongodb://localhost:27017/")
@@ -140,6 +142,55 @@ def add_feedback():
         feedback_collection.insert_one(feedback_data)
 
         return jsonify({"message": "Feedback added successfully!"}), 201
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# Static data for referral requests
+static_requests = [
+    {
+        "_id": str(ObjectId()),
+        "alumni_id": "alumni123",
+        "student_name": "John Doe",
+        "request_message": "I am seeking a referral for a software engineering position at ABC Corp.",
+        "status": "Pending"
+    },
+    {
+        "_id": str(ObjectId()),
+        "alumni_id": "alumni123",
+        "student_name": "Jane Smith",
+        "request_message": "Could you please refer me for the data analyst role at XYZ Ltd.?",
+        "status": "Pending"
+    }
+]
+
+# Endpoint to fetch all requests for an alumnus
+@app.route('/api/requests/<alumni_id>', methods=['GET'])
+def get_requests(alumni_id):
+    try:
+        # Filter static requests by alumni_id
+        requests_for_alumni = [req for req in static_requests if req["alumni_id"] == alumni_id]
+        return jsonify(requests_for_alumni), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+#
+# Endpoint to update request status (Accept/Reject)
+@app.route('/api/requests/<request_id>', methods=['POST'])
+def update_request_status(request_id):
+    try:
+        data = request.json
+        status = data.get('status')
+        
+        if status not in ['Accepted', 'Rejected']:
+            return jsonify({"error": "Invalid status"}), 400
+
+        # Find the request and update its status in the static list
+        for req in static_requests:
+            if req["_id"] == request_id:
+                req["status"] = status
+                return jsonify({"message": f"Request {status} successfully!"}), 200
+
+        return jsonify({"error": "Request not found"}), 404
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
