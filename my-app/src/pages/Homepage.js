@@ -3,7 +3,7 @@ import img from '../images/profile.jpg'
 import Charts from '../components/Charts'
 export default function Homepage(props) {
   return (
-    <div>
+    <div className='base'>
       <div className='top'>
         <img className="profile" src={img} alt="Logo" />
         <div className='top-middle'>

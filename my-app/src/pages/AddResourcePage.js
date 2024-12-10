@@ -26,7 +26,7 @@ const AddResourcePage = () => {
   };
 
   return (
-    <div>
+    <div className='Background'>
       <ResourceForm formData={formData} onChange={handleChange} onSubmit={handleSubmit} />
     </div>
   );

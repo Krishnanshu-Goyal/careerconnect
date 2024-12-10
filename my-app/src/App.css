@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+html,body{
+background-color: rgb(138, 138, 91);
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -12,6 +14,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
 
 .App-header {
   background-color: #282c34;
@@ -65,7 +68,8 @@
   padding: 10px 60px 0px 60px;
   margin: 20px 10px 0px 10px;
   border-radius: 5px;
-  background-color: grey;
+  border: 2px solid black;
+  background: rgba(96, 95, 95, 0.159);
   display: flex;
 }
 .top-middle{
@@ -144,7 +148,8 @@
   margin: 5px 10px 5px 10px;
   height: 200px;
   border-radius: 5px;
-  background-color: grey;
+  border: 2px solid black;
+  background: rgba(96, 95, 95, 0.159);
 }
 
 /*button*/
