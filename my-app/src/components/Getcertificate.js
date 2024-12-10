@@ -44,7 +44,6 @@ function Getcertificate() {
                 </div>
                 <button onClick={downloadCertificate}>Download as PDF</button>
             </div>
-            <h2> shreya </h2>
         </div>
     );
 }
