@@ -1,97 +1,89 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 10px;
-    padding: 30px;
-    background: #f9f9f9;
-    color: #333;
+/* Form Container */
+.form {
+  max-width: 700px;
+  margin: 30px auto;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px 30px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+.form-header {
+  text-align: center;
+  padding: 10px ;
+  background: rgba(96, 95, 95, 0.159);
+  border-radius: 15px 15px 15px 15px;
+  color: white;
+}
+
+.form-header h1 {
+  margin: 5px;
+  font-size: 1.8rem;
+}
+
+/* Form Section Styles */
+form div {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #444;
+}
+
+/* Input and Select Styles */
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* File Input Styles */
+input[type="file"] {
+  padding: 8px;
+  background: #f9f9f9;
+  border: 1px dashed #ccc;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Submit Button */
+
+
+/* Validation Errors */
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  form {
+      padding: 15px;
   }
-  
-  /* Form Container */
-  .form {
-    max-width: 700px;
-    margin: 30px auto;
-    background: #ffffff;
-    border-radius: 15px;
-    padding: 20px 30px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Header Styles */
-  .form-header {
-    text-align: center;
-    padding: 10px ;
-    background: rgba(96, 95, 95, 0.159);
-    border-radius: 15px 15px 15px 15px;
-    color: white;
-  }
-  
-  .form-header h1 {
-    margin: 5px;
-    font-size: 1.8rem;
-  }
-  
-  /* Form Section Styles */
-  form div {
-    margin-bottom: 20px;
-  }
-  
+
   label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-    color: #444;
+      font-size: 14px;
   }
-  
-  /* Input and Select Styles */
-  input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: all 0.3s ease;
+
+  input, select, textarea, button {
+      font-size: 14px;
   }
-  
-  input:focus, select:focus, textarea:focus {
-    border-color: #4CAF50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-  }
-  
-  textarea {
-    min-height: 100px;
-    resize: vertical;
-  }
-  
-  /* File Input Styles */
-  input[type="file"] {
-    padding: 8px;
-    background: #f9f9f9;
-    border: 1px dashed #ccc;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  /* Submit Button */
- 
- 
-  /* Validation Errors */
-  .error {
-    color: red;
-    font-size: 0.9rem;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 600px) {
-    form {
-        padding: 15px;
-    }
-  
-    label {
-        font-size: 14px;
-    }
-  
-    input, select, textarea, button {
-        font-size: 14px;
-    }
-  }
+}
