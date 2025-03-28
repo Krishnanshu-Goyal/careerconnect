@@ -1,117 +1,48 @@
-import React from 'react';
-import '../App.css';
-import noti from '../images/notification.png'
-import logout from '../images/logout.png'
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import noti from "../images/notification.png";
+import logoutIcon from "../images/logout.png";
+
 export default function Navbar() {
-  return (
-    <div>
-      <nav className="navbar bg-body-tertiary fixed-top">
-        <div className="container-fluid">
-          <button
-            className="navbar-toggler me-2" // Added "me-2" for spacing on the right
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          
-          <div className="navbar-logo ms-auto"  >
-          <img className="noti" src={noti} alt="Logo" />
-          <img className="logout" src={logout} alt="Logo" />
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    window.location.href = "/login"; // Redirect to login page
+  };
+
+  return user ? (
+    <nav className="navbar bg-body-tertiary fixed-top">
+      <div className="container-fluid">
+        <button className="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        
+        <div className="navbar-logo ms-auto">
+          <img className="noti" src={noti} alt="Notification" />
+          <img className="logout" src={logoutIcon} alt="Logout" onClick={handleLogout} style={{ cursor: "pointer" }} />
+        </div>
+
+        <div className="offcanvas offcanvas-start" id="offcanvasNavbar">
+          <div className="offcanvas-header">
+            <h5 className="offcanvas-title">Career Connect</h5>
+            <button type="button" className="btn-close" data-bs-dismiss="offcanvas"></button>
           </div>
-
-          <div
-            className="offcanvas offcanvas-start"
-            tabIndex="-1"
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
-          >
-            <div className="offcanvas-header">
-              <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-              Career Connect
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="offcanvas-body p-1 ps-3">  
-              <ul className="navbar-nav justify-content-end flex-grow-1 pe-3 m-1">
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    aria-current="page"
-                    to="/Home"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/Leaderboard">
-                    LeaderBoard
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    aria-current="page"
-                    to="/Viewrequest"
-                  >
-                    View Request
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/Getcertificate">
-                    Get Certificate
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    to="/add-resource"
-                  >
-                    Add Resources
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    to="/feedback-page"
-                  >
-                   Feedback Form
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    aria-current="page"
-                    to="/Placementstats"
-                  >
-                    Placement Stats 
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/Jobopportunity">
-                    Job Opportunity
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/Setting">
-                    Settings
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          <div className="offcanvas-body">
+            <ul className="navbar-nav">
+              <li><Link className="nav-link" to="/home">Home</Link></li>
+              <li><Link className="nav-link" to="/leaderboard">LeaderBoard</Link></li>
+              <li><Link className="nav-link" to="/viewrequest">View Request</Link></li>
+              <li><Link className="nav-link" to="/getcertificate">Get Certificate</Link></li>
+              <li><Link className="nav-link" to="/add-resource">Add Resources</Link></li>
+              <li><Link className="nav-link" to="/feedback-page">Feedback Form</Link></li>
+              <li><Link className="nav-link" to="/placementstats">Placement Stats</Link></li>
+              <li><Link className="nav-link" to="/jobopportunity">Job Opportunity</Link></li>
+              <li><Link className="nav-link" to="/setting">Settings</Link></li>
+            </ul>
           </div>
         </div>
-      </nav>
-    </div>
-  );
+      </div>
+    </nav>
+  ) : null; // Hide Navbar when not logged in
 }

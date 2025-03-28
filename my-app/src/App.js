@@ -1,40 +1,36 @@
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Login from "./pages/Login";
 
-import Navbar from './components/Navbar';
-import './App.css';
-import Home from './components/Home';
-import Leaderboard from './components/Leaderboard';
-import GetCertificatePage from './pages/GetcertificatePage';
-import Jobopportunity from './pages/Jobopportunity';
-import Placementstats from './pages/Placementstats';
-import Viewrequest from './pages/Viewrequest';
-import Setting from './pages/Setting';
-import AddResourcePage from './pages/AddResourcePage';
-import FeedbackPage from './pages/FeedbackPage';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes
-} from "react-router-dom";
+function PrivateRoute({ children }) {
+  const { user } = useAuth();
+  return user ? children : <Navigate to="/login" />;
+}
+
+function Layout() {
+  const location = useLocation();
+  const hideNavbar = location.pathname === "/login";
+
+  return (
+    <>
+      {!hideNavbar && <Navbar />}
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+      </Routes>
+    </>
+  );
+}
 
 function App() {
   return (
-    <>
-    <Router>
-      <Navbar/>
-      <Routes>
-      <Route path="/home" element={<Home />} />
-      <Route path="/leaderboard" element={<Leaderboard />} />
-      <Route path="/getcertificate" element={<GetCertificatePage />} />
-      <Route path="/jobopportunity" element={<Jobopportunity />} />
-      <Route path="/add-resource" element={<AddResourcePage />} />
-      <Route path="/feedback-page" element={<FeedbackPage />} />
-      <Route path="/placementstats" element={<Placementstats />} />
-      <Route path="/viewrequest" element={<Viewrequest />} />
-      <Route path="/setting" element={<Setting />} />
-      <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
-    </>
+    <AuthProvider>
+      <Router>
+        <Layout />
+      </Router>
+    </AuthProvider>
   );
 }
 
