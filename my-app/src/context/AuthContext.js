@@ -1,23 +1,35 @@
-import { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
+// Create AuthContext
 const AuthContext = createContext();
 
+// Auth Provider Component
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(localStorage.getItem("user") || null);
+  const [user, setUser] = useState(() => {
+    return JSON.parse(localStorage.getItem("user")) || null;
+  });
 
-  const login = (email, password) => {
-    // Mock user authentication (Replace with API call in real-world apps)
-    if (email === "admin@gmail.com" && password === "admin") {
-      localStorage.setItem("user", email);
-      setUser(email);
-      return true;
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
     }
-    return false;
+  }, [user]);
+
+  // Login Function
+  const login = (email, password) => {
+    if (email === "admin@gmail.com" && password === "admin") {
+      setUser({ email }); // ✅ Stores user info
+    } else {
+      alert("Invalid Credentials");
+    }
   };
 
+  // Logout Function
   const logout = () => {
-    localStorage.removeItem("user");
     setUser(null);
+    localStorage.removeItem("user");
   };
 
   return (
@@ -27,6 +39,7 @@ export function AuthProvider({ children }) {
   );
 }
 
+// Custom Hook for Auth
 export function useAuth() {
   return useContext(AuthContext);
 }
