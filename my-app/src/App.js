@@ -11,14 +11,15 @@ function PrivateRoute({ children }) {
 
 function Layout() {
   const location = useLocation();
-  const hideNavbar = location.pathname === "/login";
+  const hideNavbar = location.pathname === "/login"; // Hide Navbar on login page
 
   return (
     <>
       {!hideNavbar && <Navbar />}
-      <Routes>
+      <Routes future={{ v7_relativeSplatPath: true }}> {/* ✅ Enable future flag */}
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+        <Route path="*" element={<Navigate to="/login" />} /> {/* Redirect unknown routes */}
       </Routes>
     </>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "../styling/Login.css";
 import { useAuth } from "../context/AuthContext";
+import "../styling/Login.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -24,8 +24,8 @@ export default function Login() {
       <h2>Login</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleLogin}>
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /><br></br>
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /><br></br>
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button type="submit">Login</button>
       </form>
     </div>
